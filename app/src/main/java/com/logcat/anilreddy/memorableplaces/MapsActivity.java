@@ -125,6 +125,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 }
             }
+        } else {
+
+            Location placeLocation = new Location(LocationManager.GPS_PROVIDER);
+            placeLocation.setLatitude(MainActivity.locations.get(intent.getIntExtra("position", 0)).latitude);
+            placeLocation.setLongitude(MainActivity.locations.get(intent.getIntExtra("position", 0)).longitude);
+
+            centerMapOnLocation(placeLocation,MainActivity.places.get(intent.getIntExtra("position", 0)));
+
+//            mMap.addMarker(new MarkerOptions().position(MainActivity.locations.get(intent.getIntExtra("position", 0)))
+//                    .title(MainActivity.places.get(intent.getIntExtra("position", 0)))
+//                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
         }
     }
 
